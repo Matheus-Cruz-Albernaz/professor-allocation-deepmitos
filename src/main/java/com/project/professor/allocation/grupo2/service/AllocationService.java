@@ -3,8 +3,8 @@ package com.project.professor.allocation.grupo2.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.project.professor.allocation.entity.Allocation;
-import com.project.professor.allocation.repository.AllocationRepository;
+import com.project.professor.allocation.grupo2.entity.Allocation;
+import com.project.professor.allocation.grupo2.repository.AllocationRepository;
 
 public class AllocationService {
 	private final AllocationRepository allocationRepository;
@@ -14,14 +14,14 @@ public class AllocationService {
 		this.allocationRepository = allocationRepository;
 	}
 
-	// CRUD READ all
+	
 	public List<Allocation> findAll() {
 
 		List<Allocation> allocations = allocationRepository.findAll();
 		return allocations;
 	}
 
-	// CRUD READ by ID
+
 	public Allocation findById(Long id) {
 		Optional<Allocation> optional = allocationRepository.findById(id);
 		Allocation allocations = optional.orElse(null);
@@ -34,7 +34,7 @@ public class AllocationService {
 		return saveInternal(allocation);
 	}
 
-	// CRUD: Update
+	
 	public Allocation update(Allocation allocation) {
 
 		Long id = allocation.getId();
@@ -67,7 +67,7 @@ public class AllocationService {
 		allocationRepository.deleteAllInBatch();
 	}
 
-	// Regra de Negócio:
+	
 
 	boolean hasCollision(Allocation newAllocation) {
 		boolean hasCollision = false;

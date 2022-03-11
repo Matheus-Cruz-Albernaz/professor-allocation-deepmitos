@@ -3,10 +3,10 @@ package com.project.professor.allocation.grupo2.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.project.professor.allocation.entity.Allocation;
-import com.project.professor.allocation.entity.Course;
-import com.project.professor.allocation.repository.AllocationRepository;
-import com.project.professor.allocation.repository.CourseRepository;
+import com.project.professor.allocation.grupo2.entity.Allocation;
+import com.project.professor.allocation.grupo2.entity.Course;
+import com.project.professor.allocation.grupo2.repository.AllocationRepository;
+import com.project.professor.allocation.grupo2.repository.CourseRepository;
 
 public class CourseService {
 	private final CourseRepository courseRepository;

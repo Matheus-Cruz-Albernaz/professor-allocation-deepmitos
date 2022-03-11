@@ -3,15 +3,14 @@ package com.project.professor.allocation.grupo2.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.project.professor.allocation.entity.Allocation;
-import com.project.professor.allocation.entity.Department;
-import com.project.professor.allocation.entity.Professor;
-import com.project.professor.allocation.repository.AllocationRepository;
-import com.project.professor.allocation.repository.ProfessorRepository;
-import com.project.professor.allocation.service.DepartmentService;
+import com.project.professor.allocation.grupo2.entity.Allocation;
+import com.project.professor.allocation.grupo2.entity.Department;
+import com.project.professor.allocation.grupo2.entity.Professor;
+import com.project.professor.allocation.grupo2.repository.AllocationRepository;
+import com.project.professor.allocation.grupo2.repository.ProfessorRepository;
 
 public class ProfessorService {
-	public class ProfessorService {
+
 
 		private final ProfessorRepository professorRepository;
 		   private final DepartmentService departmentService;

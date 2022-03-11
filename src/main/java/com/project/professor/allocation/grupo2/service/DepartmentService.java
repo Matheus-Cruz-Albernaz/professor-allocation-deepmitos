@@ -3,13 +3,13 @@ package com.project.professor.allocation.grupo2.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.project.professor.allocation.entity.Department;
-import com.project.professor.allocation.entity.Professor;
-import com.project.professor.allocation.repository.DepartmentRepository;
-import com.project.professor.allocation.repository.ProfessorRepository;
+import com.project.professor.allocation.grupo2.entity.Department;
+import com.project.professor.allocation.grupo2.entity.Professor;
+import com.project.professor.allocation.grupo2.repository.DepartmentRepository;
+import com.project.professor.allocation.grupo2.repository.ProfessorRepository;
 
 public class DepartmentService {
-	public class DepartmentService {
+	
 
 		private final DepartmentRepository departmentRepository;
 		private final ProfessorRepository professorRepository;
@@ -73,3 +73,4 @@ public class DepartmentService {
 			return department;
 		}
 }
+
