@@ -1,5 +1,12 @@
-package com.project.professor.allocation.grupo2.repository;
+package com.project.professor.allocation.repository;
 
-public interface ProfessorRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.project.professor.allocation.entity.Professor;
+
+@Repository
+public interface ProfessorRepository extends JpaRepository<Professor, Long>{
+
 
 }
