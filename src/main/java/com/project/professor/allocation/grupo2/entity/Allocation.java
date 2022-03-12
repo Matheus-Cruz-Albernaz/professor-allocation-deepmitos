@@ -12,28 +12,42 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 
-@Entity
-public class Allocation {
+import io.swagger.annotations.ApiModelProperty;
 
+@Entity
+@Table(name = "Allocation")
+public class Allocation {
+	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+<<<<<<< HEAD
 
 	@Column(name = "day", nullable = false)
+=======
+	
+	@Column(name = "Day", nullable = false)
+>>>>>>> main
 	@Enumerated(EnumType.STRING)
 	private DayOfWeek day;
-
+	
+	@ApiModelProperty(example = "10:00-0300")
 	@JsonFormat(pattern = "HH:mmZ")
 	@JsonSerialize(using = DateSerializer.class)
+<<<<<<< HEAD
 	// JAVA -> JSON
 	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
 	// JSON -> JAVA
@@ -41,25 +55,39 @@ public class Allocation {
 	@Temporal(TemporalType.TIME)
 	private Date start;
 
+=======
+	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
+	@Column(name = "Start", nullable = false)
+	@Temporal(TemporalType.TIME)
+	private Date start;
+	
+	@ApiModelProperty(example = "12:00-0300")
+>>>>>>> main
 	@JsonFormat(pattern = "HH:mmZ")
 	@JsonSerialize(using = DateSerializer.class)
 	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
-	@Column(name = "end", nullable = false)
+	@Column(name = "End", nullable = false)
 	@Temporal(TemporalType.TIME)
 	private Date end;
-
-	@Column(name = "course_id", nullable = false)
+	
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@Column(name = "Course_id", nullable = false)
 	private Long courseId;
-
+	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@JsonIgnoreProperties({ "allocations" })
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "course_id", updatable = false, insertable = false, nullable = false)
+	@JoinColumn(name = "Course_id", updatable = false, insertable = false, nullable = false)
 	private Course course;
-
-	@Column(name = "professor_id", nullable = false)
+	
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@Column(name = "Professor_id", nullable = false)
 	private Long professorId;
-
+	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@JsonIgnoreProperties({ "allocations" })
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "professor_id", updatable = false, insertable = false, nullable = false)
+	@JoinColumn(name = "Professor_id", updatable = false, insertable = false, nullable = false)
 	private Professor professor;
 
 	public Long getId() {
@@ -129,8 +157,21 @@ public class Allocation {
 
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return "Allocation [id=" + id + ", day=" + day + ", start=" + start + ", end=" + end + ", courseId=" + courseId
 				+ ", course=" + course + ", professorId=" + professorId + ", prof=" + professor + "]";
 	}
 
 }
+=======
+		return "Allocation [id=" + id + 
+			             ", day=" + day + 
+			             ", start=" + start + 
+			             ", end=" + end + 
+			             ", courseId=" + courseId +
+			             ", course=" + course + 
+			             ", professorId=" + professorId + 
+			             ", prof=" + professor + "]";
+	}	
+}
+>>>>>>> main

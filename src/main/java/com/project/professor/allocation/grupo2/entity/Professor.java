@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -18,23 +19,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
+@Table(name = "Professor")
 public class Professor {
 
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	@Column(name = "name", nullable = false)
 	private String name;
+
 	@Column(length = 14, unique = true, nullable = false)
 	private String cpf;
-	
-	@Column(name="department_id", nullable = false)
+
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@Column(name = "department_id", nullable = false)
 	private Long departmentId;
-	
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "department_id", updatable = false, insertable = false, nullable = false)
-	private Department depart;
-	
+
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@OneToMany(mappedBy = "professor")
@@ -45,7 +47,7 @@ public class Professor {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "department_id", nullable = false, insertable = false, updatable = false)
 	private Department department;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -78,13 +80,6 @@ public class Professor {
 		this.departmentId = departmentId;
 	}
 
-	public Department getDepart() {
-		return depart;
-	}
-
-	public void setDepart(Department depart) {
-		this.depart = depart;
-	}
 	public List<Allocation> getAllocations() {
 		return allocations;
 	}
@@ -93,10 +88,20 @@ public class Professor {
 		this.allocations = allocations;
 	}
 
-	@Override
-	public String toString() {
-		return "Professor [id=" + id + ", name=" + name + ", cpf=" + cpf + ", departmentId=" + departmentId
-				+ ", depart=" + depart + "]";
+	public Department getDepartment() {
+		return department;
 	}
 
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	@Override
+	public String toString() {
+		return "Professor [id=" + id + 
+					    ", name=" + name + 
+					    ", cpf=" + cpf + 
+					    ", departmentId=" + departmentId + 
+					    ", department=" + department + "]";
+	}
 }
