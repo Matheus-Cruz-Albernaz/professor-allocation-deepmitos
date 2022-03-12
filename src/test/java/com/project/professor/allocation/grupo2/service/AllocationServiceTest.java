@@ -41,6 +41,31 @@ public class AllocationServiceTest {
 		// Print
 		System.out.println(allocation);
 	}
+	
+	@Test
+	public void findByProfessorId() {
+		// Arrange
+		Long id = 1L;
+
+		// Act
+		List <Allocation> allocation = allocationService.findByProfessorId(id);
+
+		// Print
+		System.out.println(allocation);
+	}
+	
+	@Test
+	public void findByCourseId() {
+		// Arrange
+		Long id = 1L;
+
+		// Act
+		List <Allocation> allocation = allocationService.findByCourseId(id);
+
+		// Print
+		System.out.println(allocation);
+	}
+
 
 	@Test
 	public void save() throws ParseException {

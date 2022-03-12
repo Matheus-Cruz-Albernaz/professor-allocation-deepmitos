@@ -11,36 +11,6 @@ import com.project.professor.allocation.grupo2.repository.ProfessorRepository;
 
 public class ProfessorService {
 
-<<<<<<< HEAD
-
-		private final ProfessorRepository professorRepository;
-		   private final DepartmentService departmentService;
-		    private final AllocationRepository allocationRepository;
-
-
-		public ProfessorService(ProfessorRepository professorRepository, DepartmentService departmentService,
-	            AllocationRepository allocationRepository) {
-			super();
-			this.professorRepository = professorRepository;
-		    this.departmentService = departmentService;
-	        this.allocationRepository = allocationRepository;
-	    }
-		
-
-		
-		public List<Professor> findAll(String name) {
-			 if (name == null) {
-		            return professorRepository.findAll();
-		        } else {
-		            return professorRepository.findByNameContainingIgnoreCase(name);
-		        }
-		    }
-		
-		public Professor findById(Long id) {
-			Optional<Professor> optional = professorRepository.findById(id);
-			Professor professor = optional.orElse(null);
-			return professor;
-=======
 	private final ProfessorRepository professorRepository;
 	private final DepartmentService departmentService;
 	private final AllocationRepository allocationRepository;
@@ -48,43 +18,37 @@ public class ProfessorService {
 	public ProfessorService(ProfessorRepository professorRepository, 
 							DepartmentService departmentService,
 							AllocationRepository allocationRepository) {
+		
 		super();
 		this.professorRepository = professorRepository;
 		this.departmentService = departmentService;
 		this.allocationRepository = allocationRepository;
 	}
 
-	// CRUD READ all
 	public List<Professor> findAll(String name) {
 		if (name == null) {
 			return professorRepository.findAll();
 		} else {
 			return professorRepository.findByNameContainingIgnoreCase(name);
->>>>>>> main
 		}
 	}
 
-	// CRUD READ by ID
 	public Professor findById(Long id) {
-		Optional<Professor> optional = professorRepository.findById(id);
-		Professor professor = optional.orElse(null);
-		return professor;
+			Optional<Professor> optional = professorRepository.findById(id);
+			Professor professor = optional.orElse(null);
+			return professor;
 	}
 
-	public List<Professor> findByDepartment(Long departmentId) {
+	public List<Professor> findByDepartmentId(Long departmentId) {
 		return professorRepository.findByDepartmentId(departmentId);
 	}
 
 	public Professor create(Professor professor) {
 
-<<<<<<< HEAD
-	
-		public Professor update(Professor professor) {
-=======
 		professor.setId(null);
 		return saveInternal(professor);
+
 	}
->>>>>>> main
 
 	// CRUD: Update
 	public Professor update(Professor professor) {

@@ -1,14 +1,6 @@
 package com.project.professor.allocation.grupo2.repository;
 
-<<<<<<< HEAD
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
-import java.util.List;
-import java.util.Optional;
-=======
 import com.project.professor.allocation.grupo2.entity.Allocation;
->>>>>>> main
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +10,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
 
-<<<<<<< HEAD
-import com.project.professor.allocation.grupo2.entity.Allocation;
-=======
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.List;
->>>>>>> main
+
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)

@@ -5,9 +5,13 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 import com.project.professor.allocation.grupo2.entity.Course;
 
+@SpringBootTest
+@TestPropertySource(locations = "classpath:course.properties")
 public class CourseServiceTest {
 	
 
@@ -23,7 +27,17 @@ public class CourseServiceTest {
 		courses.forEach(System.out::println);
 	}
 	
-	
+	@Test
+	public void findAllByName() {
+		// Arrange
+		String name = "course";
+		
+		// Act
+		List<Course> courses = courseService.findAll(name);
+
+		// Print
+		courses.forEach(System.out::println);
+	}
 
 	@Test
 	public void findById() {
@@ -58,8 +72,6 @@ public class CourseServiceTest {
 		course.setId(1L);
 		course.setName("Enfermagem");
 	
-		
-
 		// Act
 		course = courseService.update(course);
 

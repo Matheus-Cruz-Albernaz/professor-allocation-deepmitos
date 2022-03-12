@@ -34,35 +34,20 @@ public class Allocation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-<<<<<<< HEAD
-
-	@Column(name = "day", nullable = false)
-=======
 	
 	@Column(name = "Day", nullable = false)
->>>>>>> main
 	@Enumerated(EnumType.STRING)
 	private DayOfWeek day;
 	
 	@ApiModelProperty(example = "10:00-0300")
 	@JsonFormat(pattern = "HH:mmZ")
 	@JsonSerialize(using = DateSerializer.class)
-<<<<<<< HEAD
-	// JAVA -> JSON
 	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
-	// JSON -> JAVA
 	@Column(name = "start", nullable = false)
 	@Temporal(TemporalType.TIME)
 	private Date start;
-
-=======
-	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
-	@Column(name = "Start", nullable = false)
-	@Temporal(TemporalType.TIME)
-	private Date start;
-	
+		
 	@ApiModelProperty(example = "12:00-0300")
->>>>>>> main
 	@JsonFormat(pattern = "HH:mmZ")
 	@JsonSerialize(using = DateSerializer.class)
 	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
@@ -157,13 +142,6 @@ public class Allocation {
 
 	@Override
 	public String toString() {
-<<<<<<< HEAD
-		return "Allocation [id=" + id + ", day=" + day + ", start=" + start + ", end=" + end + ", courseId=" + courseId
-				+ ", course=" + course + ", professorId=" + professorId + ", prof=" + professor + "]";
-	}
-
-}
-=======
 		return "Allocation [id=" + id + 
 			             ", day=" + day + 
 			             ", start=" + start + 
@@ -174,4 +152,3 @@ public class Allocation {
 			             ", prof=" + professor + "]";
 	}	
 }
->>>>>>> main

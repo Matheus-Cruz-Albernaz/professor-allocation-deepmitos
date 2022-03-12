@@ -5,10 +5,15 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 import com.project.professor.allocation.grupo2.entity.Department;
 
+@SpringBootTest
+@TestPropertySource(locations = "classpath:department.properties")
 public class DepartmentServiceTest {
+	
 	@Autowired
 	DepartmentService departmentService;
 
@@ -19,6 +24,17 @@ public class DepartmentServiceTest {
 
 		// Print
 		department.forEach(System.out::println);
+	}
+	
+	public void findAllByName() {
+		// Arrange
+		String name = "department";
+		
+		// Act
+		List<Department> dep = departmentService.findAll(name);
+
+		// Print
+		dep.forEach(System.out::println);
 	}
 
 	@Test
@@ -54,7 +70,6 @@ public class DepartmentServiceTest {
 		department.setId(1L);
 		department.setName("Saúde");
 		
-
 		// Act
 		department = departmentService.update(department);
 
