@@ -26,7 +26,7 @@ public class ProfessorService {
 	    }
 		
 
-		// CRUD READ all
+		
 		public List<Professor> findAll(String name) {
 			 if (name == null) {
 		            return professorRepository.findAll();
@@ -34,7 +34,7 @@ public class ProfessorService {
 		            return professorRepository.findByNameContainingIgnoreCase(name);
 		        }
 		    }
-		// CRUD READ by ID
+		
 		public Professor findById(Long id) {
 			Optional<Professor> optional = professorRepository.findById(id);
 			Professor professor = optional.orElse(null);
@@ -50,7 +50,7 @@ public class ProfessorService {
 			return saveInternal(professor);
 		}
 
-		// CRUD: Update
+	
 		public Professor update(Professor professor) {
 
 			Long id = professor.getId();

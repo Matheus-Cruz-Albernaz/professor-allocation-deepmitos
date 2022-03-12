@@ -1,4 +1,4 @@
-package com.project.professor.allocation.repository;
+package com.project.professor.allocation.grupo2.repository;
 
 import java.text.ParseException;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
 
-import com.project.professor.allocation.entity.Course;
+import com.project.professor.allocation.grupo2.entity.Course;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)

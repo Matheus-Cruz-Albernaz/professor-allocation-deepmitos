@@ -27,20 +27,20 @@ public class Allocation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "day", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private DayOfWeek day;
 
 	@JsonFormat(pattern = "HH:mmZ")
 	@JsonSerialize(using = DateSerializer.class)
-	//JAVA -> JSON
+	// JAVA -> JSON
 	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
-	//JSON -> JAVA
+	// JSON -> JAVA
 	@Column(name = "start", nullable = false)
 	@Temporal(TemporalType.TIME)
 	private Date start;
-	
+
 	@JsonFormat(pattern = "HH:mmZ")
 	@JsonSerialize(using = DateSerializer.class)
 	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
@@ -124,6 +124,7 @@ public class Allocation {
 
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
+
 	}
 
 	@Override
@@ -132,8 +133,4 @@ public class Allocation {
 				+ ", course=" + course + ", professorId=" + professorId + ", prof=" + professor + "]";
 	}
 
-
-	
 }
-
-

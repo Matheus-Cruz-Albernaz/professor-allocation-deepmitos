@@ -1,4 +1,4 @@
-package com.project.professor.allocation.repository;
+package com.project.professor.allocation.grupo2.repository;
 
 import java.text.ParseException;
 
