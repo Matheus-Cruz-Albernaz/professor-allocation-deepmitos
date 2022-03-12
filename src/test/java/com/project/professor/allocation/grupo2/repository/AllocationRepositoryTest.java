@@ -1,6 +1,7 @@
-package com.project.professor.allocation.repository;
+package com.project.professor.allocation.grupo2.repository;
 
-import com.project.professor.allocation.entity.Allocation;
+import com.project.professor.allocation.grupo2.entity.Allocation;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -13,7 +14,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.List;
-import java.util.Optional;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
@@ -38,32 +38,38 @@ public class AllocationRepositoryTest {
 	@Test
 	public void findById() {
 		// Arrange
+		Long id = 24L;
 
 		// Act
-		Optional<Allocation> optional = allocationRepository.findById(2L);
+		Allocation allocation = allocationRepository.findById(id).orElse(null);
 
 		// Print
-		Allocation allocation = optional.orElse(null);
 		System.out.println(allocation);
 	}
 
 	@Test
 	public void findByProfessorId() {
 		// Arrange
+		Long professorId = 1L;
 
 		// Act
+		List<Allocation> allocations = allocationRepository.findByProfessorId(professorId);
 
 		// Print
+		allocations.forEach(System.out::println);
 
 	}
 
 	@Test
 	public void findByCourseId() {
 		// Arrange
+		Long courseId = 2L;
 
 		// Act
+		List<Allocation> allocations = allocationRepository.findByCourseId(courseId);
 
 		// Print
+		allocations.forEach(System.out::println);
 
 	}
 
@@ -101,9 +107,10 @@ public class AllocationRepositoryTest {
 	@Test
 	public void deleteById() {
 		// Arrange
+		Long id = 26L;
 
 		// Act
-		allocationRepository.deleteById(11L);
+		allocationRepository.deleteById(id);
 	}
 
 	@Test

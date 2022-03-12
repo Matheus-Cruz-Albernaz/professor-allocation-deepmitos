@@ -1,6 +1,6 @@
-package com.project.professor.allocation.repository;
+package com.project.professor.allocation.grupo2.repository;
 
-import java.text.ParseException;
+import java.text.ParseException; 
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
