@@ -17,11 +17,9 @@ public class ProfessorService {
 //<<<<<<< Updated upstream
 //=======
 
-
 //		private final ProfessorRepository professorRepository;
 //		   private final DepartmentService departmentService;
 //		    private final AllocationRepository allocationRepository;
-
 
 //		public ProfessorService(ProfessorRepository professorRepository, DepartmentService departmentService,
 //	            AllocationRepository allocationRepository) {
@@ -30,51 +28,48 @@ public class ProfessorService {
 //		    this.departmentService = departmentService;
 //	        this.allocationRepository = allocationRepository;
 //	    }
-		
 
-		
-		public List<Professor> findAll(String name) {
-			 if (name == null) {
-		            return professorRepository.findAll();
-		        } else {
-		            return professorRepository.findByNameContainingIgnoreCase(name);
-		        }
-		    }
-		
-		public Professor findById(Long id) {
-			Optional<Professor> optional = professorRepository.findById(id);
-			Professor professor = optional.orElse(null);
-			return professor;
-		}
-
-// Stashed changes
-	private final ProfessorRepository professorRepository;
-	private final DepartmentService departmentService;
-	private final AllocationRepository allocationRepository;
-
-	public ProfessorService(ProfessorRepository professorRepository, 
-							DepartmentService departmentService,
-							AllocationRepository allocationRepository) {
-		
-		super();
-		this.professorRepository = professorRepository;
-		this.departmentService = departmentService;
-		this.allocationRepository = allocationRepository;
-	}
-
-//	public List<Professor> findAll(String name) {
-//		if (name == null) {
-//			return professorRepository.findAll();
-//		} else {
-//			return professorRepository.findByNameContainingIgnoreCase(name);
-//		}
+//		public List<Professor> findAll(String name) {
+//			 if (name == null) {
+//		            return professorRepository.findAll();
+//		        } else {
+//		            return professorRepository.findByNameContainingIgnoreCase(name);
+//        }
 //	}
 
 //	public Professor findById(Long id) {
 //			Optional<Professor> optional = professorRepository.findById(id);
 //			Professor professor = optional.orElse(null);
 //			return professor;
-//	}
+//		}
+
+// Stashed changes
+	private final ProfessorRepository professorRepository;
+	private final DepartmentService departmentService;
+	private final AllocationRepository allocationRepository;
+
+	public ProfessorService(ProfessorRepository professorRepository, DepartmentService departmentService,
+			AllocationRepository allocationRepository) {
+
+		super();
+		this.professorRepository = professorRepository;
+		this.departmentService = departmentService;
+		this.allocationRepository = allocationRepository;
+	}
+
+	public List<Professor> findAll(String name) {
+		if (name == null) {
+			return professorRepository.findAll();
+		} else {
+			return professorRepository.findByNameContainingIgnoreCase(name);
+		}
+	}
+
+	public Professor findById(Long id) {
+			Optional<Professor> optional = professorRepository.findById(id);
+			Professor professor = optional.orElse(null);
+			return professor;
+	}
 
 	public List<Professor> findByDepartmentId(Long departmentId) {
 		return professorRepository.findByDepartmentId(departmentId);
@@ -87,7 +82,7 @@ public class ProfessorService {
 
 	}
 
-	// CRUD: Update 
+	// CRUD: Update
 	public Professor update(Professor professor) {
 
 		Long id = professor.getId();
