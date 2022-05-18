@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.alocar_professor.AddEditAlocacaoProfessorActivity">
+
+    <Spinner
+        android:id="@+id/spinner_dia_da_semana"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_professor"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/hora_fim"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/hora_fim"
+        app:layout_constraintTop_toBottomOf="@+id/hora_fim" />
+
+    <Spinner
+        android:id="@+id/spinner_curso"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_professor"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/spinner_professor"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_professor" />
+
+    <EditText
+        android:id="@+id/hora_de_inicio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Hora de início"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_dia_da_semana"
+        app:layout_constraintStart_toStartOf="@+id/spinner_dia_da_semana"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_dia_da_semana"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/hora_fim"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Hora fim"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/hora_de_inicio"
+        app:layout_constraintStart_toStartOf="@+id/hora_de_inicio"
+        app:layout_constraintTop_toBottomOf="@+id/hora_de_inicio"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/salvar_alocacao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Salvar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/salvar_alocacao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
