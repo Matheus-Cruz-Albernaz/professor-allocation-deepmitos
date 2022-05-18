@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="icon" href="./img/IconQualiti.png">
+
+  <link rel="stylesheet" href="./style.css" />
+
+  <script src="https://kit.fontawesome.com/a8657668a1.js" crossorigin="anonymous"></script>
+
+  <title>Professor</title>
+  
+</head>
+
+<body style="background-image:url(../Course/img/Background_1920x1080_CZ.jpg);">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="./img/LogoQualiti_br.png" alt="" width="me-auto" height="24" class="d-inline-block align-text-top">
+      </a>
+      <a class="navbar-brand" href="../Home/index.html">DeepMitos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="../Home/index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Course/index.html">Curso</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Departament/index.html">Departamento</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="../Professor/index.html">Professor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Allocation/index.html">Alocação</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../login/index.html">Sair</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="container">
+    <h1>Professor</h1>
+    <label for="txtSearch">Pesquisar Professor: </label>
+    <div class="input-group mb-3">
+      <input id="txtSearch" type="text" class="form-control" placeholder="Professor" aria-label="Pesquisar"
+        aria-describedby="btnSearch">
+      <button id="btnSearch" class="btn btn-outline-secondary" type="button" onclick="refreshTable()"><i
+          class="fa fa-search"></i>
+      </button>
+      <button id="btnClearSearch" class="btn btn-outline-secondary" type="button" onclick="clearSearch()"><i
+          class="fa fa-times"></i>
+      </button>
+    </div>
+    <button id="btnAdd" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCreate">
+      Adicionar
+    </button>
+    <button id="btnDeleteAllProfessors" type="button" class="btn btn-danger">Excluir Todos os Professores</button>
+    <div id="showNotData">
+      <hr />
+      <h3>Sem informações</h3>
+    </div>
+    <table id="table" class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Departamento</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </main>
+  <!-- Modal CREATE and UPDATE-->
+  <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalCreate" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalCreateTitle">Adicionar Professor</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <form>
+            <p>*Campo obrigatório</p>
+            <div class="form-group">
+              <label for="txtName" class="required-input">Nome *</label>
+              <input type="text" class="form-control" id="txtName" maxlength="50" placeholder="Nome">
+            </div>
+            <div class="form-group">
+              <label for="txtCPF" class="required-input">CPF *</label>
+              <input type="text" class="form-control" id="txtCPF" placeholder="CPF" maxlength="11"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                onBlur="return validarCPF()">
+              <span id="passwordHelpInline" class="form-text">
+                Deve conter 11 caracteres numéricos
+              </span>
+              <span id="msgError" class="form-text"></span>
+            </div>
+            <div class="form-group">
+              <label for="selectDepartmentId" class="required-input">Departamento *</label>
+              <select class="form-select" id="selectDepartmentId">
+                <option value="selected" selected>Selecione o departamento</option>
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar
+              </button>
+              <button id="btnModalCreate" type="button" class="btn btn-success" data-bs-dismiss="modal">Salvar
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal DELETE-->
+  <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalDeleteTitle">Excluir Professor</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="msgConfirmDelete" class="modal-body">
+          <p>Você quer excluir o professor <strong id="txtDeleteProfessor"></strong>?</p>
+        </div>
+        <div id="msgConfirmDeleteAll" class="modal-body">
+          <p>Você quer excluir <strong>todos os professores</strong> ?</p>
+          <p>Você excluirá também todas as alocações.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
+          </button>
+          <button id="btnModalDelete" type="button" class="btn btn-danger" data-bs-dismiss="modal">Excluir
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+      -->
+  <script src="../service/api.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>
