@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
 
-#list-courses >li { 
+body {
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background-image: url(../img/Background_1920x1080_CZ.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right center;
+    background-attachment: fixed;
+}
+
+#list-departments >li { 
     background-color: #808080;
     color: white;
     padding: 8px 20px;
@@ -13,36 +24,8 @@
 
 }
 
-#list-courses { 
+#list-departments { 
     list-style: none;
-}
-
-body {
-    overflow-x: hidden;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    background-image: url(../img/Background_1920x1080_CZ.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: right center;
-    background-attachment: fixed;
-}
-
-.container {
-    color: rgb(100, 100, 100);
-    margin-top:  15px;
-    margin-left: 72px;
-    width: 600px;
-    padding: 8px;
-    min-height: 90vh;
-}
-
-#btnAdd {
-    margin-bottom: 16px;
-}
-
-button + button {
-    margin-left: 12px;
 }
 
 #btnAdd{
@@ -57,11 +40,19 @@ button + button {
 #btnDeleteAllDepartments{
 	margin-bottom: 10px;
 }
-
-.navbar-dark{
-    background-color: #2f61ab!important;
+button + button {
+    margin-left: 12px;
 }
 
+.container{
+    color: rgb(100, 100, 100);
+    margin-left: 72px;
+    width: 600px;
+    padding: 8px;
+    min-height: 90vh;
+	margin-top:  72px;
+    min-height: 90vh;
+}
 .bg-dark {
 	background-color: #2f61ab!important;
   }
@@ -96,9 +87,8 @@ p{
 	font-size: 12px;
 }
 
-
 #exit{
     cursor: hand;
     cursor: pointer;
   
-  }
+}

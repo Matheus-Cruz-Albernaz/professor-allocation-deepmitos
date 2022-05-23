@@ -11,6 +11,27 @@ body {
   background-attachment: fixed;
 }
 
+#list-professors >li { 
+  background-color: #808080;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+#list-professors { 
+  list-style: none;
+}
+
+button + button {
+  margin-left: 12px;
+}
+
 .container{
   color: rgb(100, 100, 100);
   margin-left: 72px;
@@ -98,4 +119,9 @@ p{
 .table-striped{
   color: rgb(100, 100, 100);
   font-style:italic;
+}
+
+.itens{
+  padding-left: 20px;
+  font-size: 15px;
 }
